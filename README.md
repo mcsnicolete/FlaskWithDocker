@@ -113,7 +113,7 @@ Utilizaremos a imagem existente `tiangolo/uwsgi-nginx-flask` que está no **Dock
 Exemplo do Dockerfile abaixo:
 ```
 #instalação da imagem
-FROM FROM tiangolo/uwsgi-nginx-flask:python3.8-alpine3.11
+FROM tiangolo/uwsgi-nginx-flask:python3.8-alpine3.11
 
 #add bash e nano na imagem
 RUN apk --update add bash nano
