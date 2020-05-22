@@ -73,7 +73,7 @@ Dentro do arquivo `uwsgi.ini` temos o `module`, que trata-se do módulo que vai 
 A proxima etapa é criar o arquivo `main.py`:
 
 ```
-$ sudo nano main.py
+$ sudo nano /app/myflaskapp/main.py
 ```
 Adicionar o seguinte conteúdo ao arquivo novo:
 
