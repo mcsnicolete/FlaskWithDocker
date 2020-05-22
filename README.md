@@ -1,4 +1,4 @@
-#Rodando um aplicativo Flask com docker:
+# Rodando um aplicativo Flask com docker:
 
 A principio, vamos criar 2 arquivos, o `Dockerfile` e um `run.sh`, para que possamos rodar nossa implantação no Docker. O `Dockerfile`  nada mais é que que um arquivo de texto que comtém os comandos necessários para a execução montagem da imagem. Já no arquivo `run.sh` teremos um script que irá construir uma imagem e criará um container do `Dockerfile`.
 
