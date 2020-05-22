@@ -83,8 +83,17 @@ from app import app
 
 Agora que criamos o ponto de entrada do nosso app, o uWSGI já terá uma forma de interação com o aplicativo.
 
+Agora por fim vamos especificar as dependências que o `pip` instalara em sua implantação dentro do Docker, vamos criar o nosso arquivo `requirements.txt` dentro de `app`.
+ ```
+$ sudo nano /app/myflaskapp/app/requirements.txt
+```
+ Dentro do arquivo, deve conter: 
+ 
+ ```
+ Flask==1.1.2
+ ```
 
-
+Quando eu estava escrevendo isso, a versão `1.1.2` era a LTS, por isso selecionei.
 
 
 
