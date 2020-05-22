@@ -139,6 +139,13 @@ $ 1
 ```
 Após a execução ele deve retornar `1`, isso significa que a porta está disponível para uso. Caso retorne algo diferente disso, deverá selecionar outras porta.
 
+Vamos criar o arquivo run.sh:
+
+```
+$ sudo nano run.sh
+```
+ Dentro do arquivo, deve conter:
+
 ```
 #!/bin/bash
 app="myflaskapp"
@@ -148,4 +155,20 @@ docker run -d -p 54321:80 \
   -v $PWD:/app ${app}
 ```
 
+Após isso executar o arquivo run.sh:
 
+```
+$ sudo bash start.sh
+```
+
+Após isso executar verificar o container deve ser executar o seguinte comando:
+```
+docker container ls
+```
+
+E o retorno deve ser esse aqui:
+
+```
+CONTAINER ID  IMAGE           COMMAND                 CREATED             STATUS           PORTS                            NAMES
+c3e4a4fce9a7  myflaskapp     "/entrypoint.sh /sta…"   25 minutes ago      Up 25 minutes    443/tcp, 0.0.0.0:54321->80/tcp   myflaskapp
+```
