@@ -1,5 +1,5 @@
 #instalação da imagem
-FROM tiangolo/uwsgi-nginx-flask:python3.8-alpine3.11
+FROM tiangolo/uwsgi-nginx-flask:python3.6-alpine3.7
 
 #add bash e nano na imagem
 RUN apk --update add bash nano

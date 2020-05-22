@@ -25,7 +25,7 @@ Vamos criar nosso arquivo de inicialização dentro de app o arquyivo deve se ch
 
 Execute:
 ```
-$ sudo nano /app/myflaskapp/__init__.py
+$ sudo nano app/__init__.py
 ```
 Na sequencia coloque o trecho de código abaixo, dentro do seu __init__.py, esse trecho de código tem como objetivo, importa a lógica para o arquivo view.py e criar uma insância de Flask:
 
@@ -34,11 +34,12 @@ from flask import Flask
 app = Flask(__name__)
 from app import views
 ```
+
 Salve o arquivo e saia do nano.
  Após a criação do arquivo `__init__.py`, podemos seguir para a criação do arquivo `views.py` no diretório `app`. No arquivo views.py fica a logica da aplicação.
  
 ```
-$ sudo nano /app/myflaskapp/app/views.py
+$ sudo nano app/views.py
 ```
 
 conteudo inicial do nosso views.py:
@@ -57,7 +58,7 @@ Após o `views.py`, o proximo passo é criar `uwsgi.ini`. Dentro do arquivo `uws
 Criando o `uwsgi.ini`:
 
 ```
-$ sudo nano /app/myflaskapp/uwsgi.ini
+$ sudo nano uwsgi.ini
 ```
 Adicione o seguinte conteudo ao arquivo:
 
@@ -73,7 +74,7 @@ Dentro do arquivo `uwsgi.ini` temos o `module`, que trata-se do módulo que vai 
 A proxima etapa é criar o arquivo `main.py`:
 
 ```
-$ sudo nano /app/myflaskapp/main.py
+$ sudo nano main.py
 ```
 Adicionar o seguinte conteúdo ao arquivo novo:
 
@@ -85,7 +86,7 @@ Agora que criamos o ponto de entrada do nosso app, o uWSGI já terá uma forma d
 
 Agora por fim vamos especificar as dependências que o `pip` instalara em sua implantação dentro do Docker, vamos criar o nosso arquivo `requirements.txt` dentro de `app`.
  ```
-$ sudo nano /app/myflaskapp/app/requirements.txt
+$ sudo nano requirements.txt
 ```
  Dentro do arquivo, deve conter: 
  
@@ -105,7 +106,7 @@ A principio, vamos criar 2 arquivos, o `Dockerfile` e um `run.sh`, para que poss
 Tenho um diretório com meu aplicativo Flask `/app/myflaskapp`, precisamos criar o `Dockerfile` lá dentro.
 
 ```
-$ sudo nano /app/myflaskapp/Dockerfile
+$ sudo nano Dockerfile
 ```
 Dentro do `Dockerfile`, adicionaremos os comando necessários para construção da imagem, juntamente com os requisitos extras a serem incluídos dentro da imagem.
 Utilizaremos a imagem existente `tiangolo/uwsgi-nginx-flask` que está no **Dockerhub**, para contruir nossa imagem.
