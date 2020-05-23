@@ -7,15 +7,11 @@ from flask import Flask, request, jsonify, render_template
 def home():
     return "É TETRA! É TETRA!"
 
-@app.route('/templates')
-def templates():
-    return render_template('home-test.html')
- 
 @app.route('/healthcheck')
 def heatlhcheck():
     return render_template('hc.html')
 
-@app.route('/bexs')
+@app.route('/bx')
 def bexs():
     return render_template('ind.html')
 
