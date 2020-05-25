@@ -3,6 +3,10 @@ from app import app
 from flask import Flask, request, jsonify, render_template
 
 
+backend_host = os.getenv("BACKEND_HOST", "localhost")
+backend_port = os.getenv("BACKEND_PORT", 8080)
+
+
 @app.route('/hw')
 def home():
     return "É TETRA! É TETRA!"
