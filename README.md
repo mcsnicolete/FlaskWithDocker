@@ -1,6 +1,6 @@
 # Vamos preparar nossos arquivos Flask
 
-Primeiro vamos criar nosso diretório para nosso aplicativo flask. No m eu caso eu criei um diretórico com o nome `myflaskapp` dentro de `/app`, mas nesse caso fica livre a escolha do nome.
+Primeiro vamos criar nosso diretório para nosso aplicativo flask. No m eu caso eu criei um diretório com o nome `myflaskapp` dentro de `/app`, mas nesse caso fica livre a escolha do nome.
 ```
  $ sudo mkdir /app/myflaskapp
 ```
@@ -27,7 +27,7 @@ Execute:
 ```
 $ sudo nano app/__init__.py
 ```
-Na sequencia coloque o trecho de código abaixo, dentro do seu __init__.py, esse trecho de código tem como objetivo, importa a lógica para o arquivo view.py e criar uma insância de Flask:
+Na sequencia coloque o trecho de código abaixo, dentro do seu __init__.py, esse trecho de código tem como objetivo, importa a lógica para o arquivo view.py e criar uma instância de Flask:
 
 ```
 from flask import Flask
@@ -36,13 +36,13 @@ from app import views
 ```
 
 Salve o arquivo e saia do nano.
- Após a criação do arquivo `__init__.py`, podemos seguir para a criação do arquivo `views.py` no diretório `app`. No arquivo views.py fica a logica da aplicação.
+ Após a criação do arquivo `__init__.py`, podemos seguir para a criação do arquivo `views.py` no diretório `app`. No arquivo views.py fica a lógica da aplicação.
  
 ```
 $ sudo nano app/views.py
 ```
 
-conteudo inicial do nosso views.py:
+Conteúdo inicial do nosso views.py:
 
 ```
 from app import app
@@ -53,14 +53,14 @@ def home():
 ```
 Esse código irá retornar uma string na tela `É TETRA! É TETRA!`
 
-Após o `views.py`, o proximo passo é criar `uwsgi.ini`. Dentro do arquivo `uwsgi.ini` temos as opções de implantação do `Nginx` `uWSGI`, que trata-se de um `App Server` e um protocolo ao mesmo tempo, o `App Server`, além de atender no protocolo `uWSGI`, atende também nos protocolos `FastCGI` e `HTTP`.
+Após o `views.py`, o próximo passo é criar `uwsgi.ini`. Dentro do arquivo `uwsgi.ini` temos as opções de implantação do `Nginx` `uWSGI`, que se trata de um `App Server` e um protocolo ao mesmo tempo, o `App Server`, além de atender no protocolo `uWSGI`, atende também nos protocolos `FastCGI` e `HTTP`.
 
 Criando o `uwsgi.ini`:
 
 ```
 $ sudo nano uwsgi.ini
 ```
-Adicione o seguinte conteudo ao arquivo:
+Adicione o seguinte conteúdo ao arquivo:
 
 ```
 [uwsgi]
@@ -69,9 +69,9 @@ callable = app
 master = true
 ```
 
-Dentro do arquivo `uwsgi.ini` temos o `module`, que trata-se do módulo que vai servir o nosso App flask, que nesse caso, trata-se do arquivo `main.py`(que vamos criar na próxima etapa), no `uwsgi.ini` eu referencio ele apenas como `main`. Temos no arquivo uma outra linha que tem o nome de `callable` que nesse caso eu falo para o uWSGI usar a instância com o nome `app`que será exportada do app principal. Por ultimo temos a linha do `master`, essa por sua vez permite que o nosso app tenho o tempo de paralização reduzido ao recarrega-lo por inteiro.
+Dentro do arquivo `uwsgi.ini` temos o `module`, que trata-se do módulo que vai servir o nosso App flask, que nesse caso, trata-se do arquivo `main.py`(que vamos criar na próxima etapa), no `uwsgi.ini` eu referencio ele apenas como `main`. Temos no arquivo uma outra linha que tem o nome de `callable` que nesse caso eu falo para o uWSGI usar a instância com o nome `app`que será exportada do app principal. Por último temos a linha do `master`, essa por sua vez permite que o nosso app tenho o tempo de paralização reduzido ao recarrega-lo por inteiro.
 
-A proxima etapa é criar o arquivo `main.py`:
+A próxima etapa é criar o arquivo `main.py`:
 
 ```
 $ sudo nano main.py
@@ -101,15 +101,15 @@ Quando eu estava escrevendo isso, a versão `1.1.2` era a LTS, por isso selecion
 
 ## Rodando um aplicativo Flask com docker:
 
-A principio, vamos criar 2 arquivos, o `Dockerfile` e um `run.sh`, para que possamos rodar nossa implantação no Docker. O `Dockerfile`  nada mais é que que um arquivo de texto que comtém os comandos necessários para a execução montagem da imagem. Já no arquivo `run.sh` teremos um script que irá construir uma imagem e criará um container do `Dockerfile`.
+A princípio, vamos criar 2 arquivos, o `Dockerfile` e um `run.sh`, para que possamos rodar nossa implantação no Docker. O `Dockerfile` nada mais é que que um arquivo de texto que contém os comandos necessários para a execução montagem da imagem. Já no arquivo `run.sh` teremos um script que irá construir uma imagem e criará um container do `Dockerfile`.
 
 Tenho um diretório com meu aplicativo Flask `/app/myflaskapp`, precisamos criar o `Dockerfile` lá dentro.
 
 ```
 $ sudo nano Dockerfile
 ```
-Dentro do `Dockerfile`, adicionaremos os comando necessários para construção da imagem, juntamente com os requisitos extras a serem incluídos dentro da imagem.
-Utilizaremos a imagem existente `tiangolo/uwsgi-nginx-flask` que está no **Dockerhub**, para contruir nossa imagem.
+Dentro do `Dockerfile`, adicionaremos os comandos necessários para construção da imagem, juntamente com os requisitos extras a serem incluídos dentro da imagem.
+Utilizaremos a imagem existente `tiangolo/uwsgi-nginx-flask` que está no **Dockerhub**, para construir nossa imagem.
 
 Exemplo do Dockerfile abaixo:
 ```
@@ -137,7 +137,7 @@ Agora que temos um Dockerfile funcional, precisamos avançar para a proxima etap
 $ sudo nc localhost 54321 < /dev/null; echo $?
 $ 1
 ```
-Após a execução ele deve retornar `1`, isso significa que a porta está disponível para uso. Caso retorne algo diferente disso, deverá selecionar outras porta.
+Após a execução ele deve retornar `1`, isso significa que a porta está disponível para uso. Caso retorne algo diferente disso, deverá selecionar outras portas.
 
 Vamos criar o arquivo run.sh:
 
