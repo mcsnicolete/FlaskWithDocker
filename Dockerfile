@@ -1,5 +1,12 @@
 #instalação da imagem
-FROM tiangolo/uwsgi-nginx-flask:python3.6-alpine3.7
+#FROM tiangolo/uwsgi-nginx-flask:python3.6-alpine3.7
+FROM tiangolo/uwsgi-nginx-flask:latest
+
+# Isso é uma tag com informnações do maintainer da aplicação
+LABEL maintainer="Marcos Nicolete <mcsnicolete@gmail.com>"
+
+# Esse será o workdir do container
+WORKDIR /app
 
 #add bash e nano na imagem
 RUN apk --update add bash nano
